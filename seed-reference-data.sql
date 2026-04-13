@@ -20,3 +20,11 @@ ON DUPLICATE KEY UPDATE
   symbol = VALUES(symbol),
   is_base_currency = VALUES(is_base_currency),
   is_active = VALUES(is_active);
+
+INSERT INTO warehouses (name, location, is_active)
+VALUES
+  ('Santiago Central Warehouse', 'Santiago, Chile', 1),
+  ('Valparaiso Transit Hub', 'Valparaiso, Chile', 1)
+ON DUPLICATE KEY UPDATE
+  location = VALUES(location),
+  is_active = VALUES(is_active);
