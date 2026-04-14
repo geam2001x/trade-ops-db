@@ -28,3 +28,37 @@ VALUES
 ON DUPLICATE KEY UPDATE
   location = VALUES(location),
   is_active = VALUES(is_active);
+
+INSERT INTO exchange_rate_snapshots (
+  base_currency_code,
+  quote_currency_code,
+  rate,
+  buy_rate,
+  sell_rate,
+  rate_date,
+  source_name,
+  source_url,
+  buy_sell_source_name,
+  buy_sell_source_url
+)
+VALUES
+  (
+    'USD',
+    'CLP',
+    950.000000,
+    NULL,
+    NULL,
+    TIMESTAMP(CURDATE(), '12:00:00'),
+    'manual_seed',
+    'https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_TIPO_CAMBIO/MN_TIPO_CAMBIO4/DOLAR_OBS_ADO?idSerie=F073.TCO.PRE.Z.D',
+    NULL,
+    NULL
+  )
+ON DUPLICATE KEY UPDATE
+  rate = VALUES(rate),
+  buy_rate = VALUES(buy_rate),
+  sell_rate = VALUES(sell_rate),
+  source_name = VALUES(source_name),
+  source_url = VALUES(source_url),
+  buy_sell_source_name = VALUES(buy_sell_source_name),
+  buy_sell_source_url = VALUES(buy_sell_source_url);
