@@ -29,6 +29,114 @@ ON DUPLICATE KEY UPDATE
   location = VALUES(location),
   is_active = VALUES(is_active);
 
+INSERT INTO suppliers (
+  name,
+  tax_id,
+  country_code,
+  contact_name,
+  email,
+  phone,
+  address,
+  is_active
+)
+VALUES
+  (
+    'Shenzhen Industrial Supply Co.',
+    'CN-SIS-001',
+    'CN',
+    'Lina Chen',
+    'orders@shenzhen-industrial.example',
+    '+86 755 0000 0001',
+    'Baoan District, Shenzhen, China',
+    1
+  ),
+  (
+    'Pacific Components Miami',
+    'US-PCM-002',
+    'US',
+    'Mark Rivera',
+    'sales@pacific-components.example',
+    '+1 305 000 0002',
+    'Doral, Florida, United States',
+    1
+  )
+ON DUPLICATE KEY UPDATE
+  name = VALUES(name),
+  country_code = VALUES(country_code),
+  contact_name = VALUES(contact_name),
+  email = VALUES(email),
+  phone = VALUES(phone),
+  address = VALUES(address),
+  is_active = VALUES(is_active);
+
+INSERT INTO customers (
+  customer_type,
+  name,
+  tax_id,
+  email,
+  phone,
+  address,
+  is_active
+)
+VALUES
+  (
+    'wholesale',
+    'Distribuidora Andina SpA',
+    '76.123.456-7',
+    'compras@andina.example',
+    '+56 2 2000 0001',
+    'Santiago, Chile',
+    1
+  ),
+  (
+    'retail',
+    'Cliente Retail Demo',
+    '19.876.543-2',
+    'retail.demo@example',
+    '+56 9 8000 0002',
+    'Providencia, Chile',
+    1
+  )
+ON DUPLICATE KEY UPDATE
+  customer_type = VALUES(customer_type),
+  name = VALUES(name),
+  email = VALUES(email),
+  phone = VALUES(phone),
+  address = VALUES(address),
+  is_active = VALUES(is_active);
+
+INSERT INTO products (
+  sku,
+  name,
+  description,
+  unit_measure,
+  default_sale_price_usd,
+  is_active
+)
+VALUES
+  (
+    'SKU-ADAPTER-001',
+    'Adaptador universal 65W',
+    'Adaptador universal para equipos electronicos de consumo',
+    'unit',
+    42.0000,
+    1
+  ),
+  (
+    'SKU-CABLE-002',
+    'Cable USB-C reforzado',
+    'Cable USB-C de alta resistencia para venta retail y wholesale',
+    'unit',
+    12.5000,
+    1
+  )
+ON DUPLICATE KEY UPDATE
+  name = VALUES(name),
+  description = VALUES(description),
+  unit_measure = VALUES(unit_measure),
+  default_sale_price_usd = VALUES(default_sale_price_usd),
+  is_active = VALUES(is_active);
+
 INSERT INTO exchange_rate_snapshots (
   base_currency_code,
   quote_currency_code,
