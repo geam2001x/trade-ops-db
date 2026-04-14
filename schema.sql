@@ -151,8 +151,13 @@ CREATE TABLE exchange_rate_snapshots (
   base_currency_code CHAR(3) NOT NULL,
   quote_currency_code CHAR(3) NOT NULL,
   rate DECIMAL(18, 6) NOT NULL,
+  buy_rate DECIMAL(18, 6) NULL,
+  sell_rate DECIMAL(18, 6) NULL,
   rate_date DATETIME NOT NULL,
   source_name VARCHAR(120) NOT NULL,
+  source_url VARCHAR(255) NULL,
+  buy_sell_source_name VARCHAR(120) NULL,
+  buy_sell_source_url VARCHAR(255) NULL,
   fetched_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY uq_exchange_rate_snapshots_pair_date (
